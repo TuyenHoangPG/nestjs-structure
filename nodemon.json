@@ -1,0 +1,7 @@
+{
+  "watch": ["**/*"],
+  "ignore": ["dist", "**/*.test.ts", "node_modules"],
+  "ext": "ts,mjs,js,json,graphql",
+  "exec": "nest build && nest start",
+  "legacyWatch": true
+}
