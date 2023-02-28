@@ -1,11 +1,9 @@
-import { UserRole } from '@constants/enum';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class UserResponseDto {
+export class UserRegisterDto {
   @ApiProperty() userId: string;
   @ApiProperty() firstName: string;
   @ApiProperty() lastName: string;
-  @ApiProperty() displayName: string;
   @ApiProperty() email: string;
-  @ApiProperty() role: UserRole;
+  @ApiProperty() token: string;
 }

@@ -4,9 +4,13 @@ import { CanActivate, ExecutionContext, HttpException, HttpStatus } from '@nestj
 import { Reflector } from '@nestjs/core';
 
 export class RolesGuard implements CanActivate {
-  constructor(private readonly reflect: Reflector) {}
+  constructor(private readonly reflect: Reflector) {
+    console.log('🚀 ~ file: roles.guard.ts:8 ~ RolesGuard ~ constructor ~ reflect:', reflect);
+  }
 
   canActivate(context: ExecutionContext): boolean {
+    console.log('🚀 ~ file: roles.guard.ts:8 ~ RolesGuard ~ constructor ~ reflect:', this.reflect);
+
     const roles = this.reflect.get<UserRole[]>('roles', context.getHandler());
     if (!roles?.length) {
       return true;

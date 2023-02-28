@@ -15,9 +15,9 @@ class TypeORMConfigurations extends ConfigurationsService {
       logging: false,
       synchronize: false,
       name: 'default',
-      entities: ['./src/databases/entities/**.entity{.ts,.js}'],
-      migrations: ['./src/databases/migrations/**/*{.ts,.js}'],
-      subscribers: ['./src/databases/subscriber/**/*{.ts,.js}'],
+      entities: ['src/databases/entities/**.entity{.ts,.js}'],
+      migrations: ['src/databases/migrations/**/*{.ts,.js}'],
+      subscribers: ['src/databases/subscriber/**/*{.ts,.js}'],
     });
   }
 }

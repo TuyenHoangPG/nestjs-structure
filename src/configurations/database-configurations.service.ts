@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { join } from 'path';
 import { ConfigurationEnum } from './configurations.enum';
 import { ConfigurationsService } from './configurations.service';
 
@@ -13,7 +14,7 @@ export class DatabaseConfigurations extends ConfigurationsService {
       username: process.env[ConfigurationEnum.DB_USERNAME],
       password: process.env[ConfigurationEnum.DB_PASSWORD],
       database: process.env[ConfigurationEnum.DB_NAME],
-      entities: ['src/databases/entities/**.entity{.ts,.js}'],
+      entities: ['dist/databases/entities/*.entity.{ts,js}', join(__dirname, '**', '*.entity.{ts,js}')],
       synchronize: false,
       logging: false,
     };

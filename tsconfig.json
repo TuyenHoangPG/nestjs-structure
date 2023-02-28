@@ -26,7 +26,8 @@
       "@filters/*": ["src/commons/filters/*"],
       "@guards/*": ["src/commons/guards/*"],
       "@pipes/*": ["src/commons/pipes/*"],
-      "@utilities/*": ["src/commons/utilities/*"]
+      "@utilities/*": ["src/commons/utilities/*"],
+      "@entities/*": ["src/databases/entities/*"]
     }
   }
 }

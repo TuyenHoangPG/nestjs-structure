@@ -46,6 +46,6 @@ export abstract class BaseRepository<T> {
 }
 
 export interface IPagination<T> {
-  readonly items: T[];
+  items: T[];
   readonly total: number;
 }

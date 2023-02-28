@@ -16,13 +16,13 @@ export class createUserTable1677558801267 implements MigrationInterface {
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'first-name',
+            name: 'first_name',
             type: 'varchar',
             length: '100',
             isNullable: false,
           },
           {
-            name: 'last-name',
+            name: 'last_name',
             type: 'varchar',
             length: '100',
             isNullable: false,

@@ -12,21 +12,22 @@ import {
 
 @Entity('users')
 export class User extends BaseEntity {
-  @Column({ name: 'user-id' })
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { name: 'user_id' })
   userId: string;
 
-  @Column({ name: 'first-name' })
+  @Column({ name: 'first_name' })
   firstName: string;
 
-  @Column({ name: 'last-name' })
+  @Column({ name: 'last_name' })
   lastName: string;
 
+  @Column({ name: 'email' })
   email: string;
 
+  @Column({ name: 'password' })
   password: string;
 
-  @Column({ type: 'enum', enum: UserRole, default: UserRole.USER })
+  @Column({ name: 'role', type: 'enum', enum: UserRole, default: UserRole.USER })
   role: UserRole;
 
   @CreateDateColumn({ name: 'created_at' })
