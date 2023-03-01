@@ -28,8 +28,8 @@ export class AppModule {
   static isDev: boolean;
 
   constructor(private readonly configurationService: ConfigurationsService) {
-    (AppModule.port = configurationService.get(ConfigurationEnum.PORT)),
-      (AppModule.host = configurationService.get(ConfigurationEnum.HOST));
+    AppModule.port = configurationService.get(ConfigurationEnum.PORT);
+    AppModule.host = configurationService.get(ConfigurationEnum.HOST);
     AppModule.isDev = configurationService.isDevelopment;
   }
 }
