@@ -20,6 +20,7 @@ module.exports = {
     '@typescript-eslint/no-regex-spaces': 'off',
     '@typescript-eslint/no-debugger': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-empty-interface': 'warn',
     'no-mixed-spaces-and-tabs': 'warn',
     'no-undef': 'warn',
     'no-template-curly-in-string': 'warn',

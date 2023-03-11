@@ -19,7 +19,7 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
     const user = await this.authService.validatePayload(payload);
 
     if (!user) {
-      return done(new HttpException({}, HttpStatus.UNAUTHORIZED), false);
+      return done(new HttpException('Unauthorized!', HttpStatus.UNAUTHORIZED), false);
     }
 
     return done(null, user, payload.iat);
