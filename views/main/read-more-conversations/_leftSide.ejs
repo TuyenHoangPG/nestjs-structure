@@ -1,0 +1,47 @@
+<% newAllConversations.forEach(function(conversation) { %>
+  <% if (conversation.members) { %>
+    <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
+      <li class="person group-chat" data-chat="<%= conversation._id %>">
+        <div class="left-avatar">
+          <!-- <div class="dot"></div> -->
+          <img src="images/users/group-avatar-trungquandev.png" alt="">
+        </div>
+        <span class="name">
+          <span class="group-chat-name"><%= conversation.name %></span>
+        </span>
+        <span class="time"><%= convertTimestampToHumanTime(getLastItemInArray(conversation.messages).createdAt) %></span>
+        <span class="preview">
+          <% if (getLastItemInArray(conversation.messages).messageType == 'text') { %>
+            <span class="convert-emoji" title="<%= getLastItemInArray(conversation.messages).text %>"><%= getLastItemInArray(conversation.messages).text %></span>
+          <% } else if (getLastItemInArray(conversation.messages).messageType == 'image') { %>
+            <span title="Đã gửi cho bạn một hình ảnh">Đã gửi cho bạn một hình ảnh</span>
+          <% } else if (getLastItemInArray(conversation.messages).messageType == 'file') { %>
+            <span title="Đã gửi cho bạn một tệp đính kèm">Đã gửi cho bạn một tệp đính kèm</span>
+          <% } %>
+        </span>
+      </li>
+    </a>
+  <% } else { %>
+    <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
+      <li class="person" data-chat="<%= conversation._id %>">
+        <div class="left-avatar">
+          <div class="dot"></div>
+          <img src="images/users/<%= conversation.avatar %>" alt="">
+        </div>
+        <span class="name">
+            <%= conversation.userName %>
+        </span>
+        <span class="time"><%= convertTimestampToHumanTime(getLastItemInArray(conversation.messages).createdAt) %></span>
+        <span class="preview">
+          <% if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'text') { %>
+            <span class="convert-emoji" title="<%= getLastItemInArray(conversation.messages).text %>"><%= getLastItemInArray(conversation.messages).text %></span>
+          <% } else if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'image') { %>
+            <span title="Đã gửi cho bạn một hình ảnh">Đã gửi cho bạn một hình ảnh</span>
+          <% } else if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'file') { %>
+            <span title="Đã gửi cho bạn một tệp đính kèm">Đã gửi cho bạn một tệp đính kèm</span>
+          <% } %>
+        </span>
+      </li>
+    </a>
+  <% } %>
+<% }) %>
