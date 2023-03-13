@@ -1,5 +1,16 @@
 import { UserService } from '@apps/user/user.service';
-import { Body, Controller, HttpException, HttpStatus, Post } from '@nestjs/common';
+import { LocalAuthGuard } from '@guards/local-auth.guard';
+import {
+  Body,
+  Controller,
+  HttpException,
+  HttpStatus,
+  Post,
+  UseGuards,
+  Request,
+  Response,
+  Redirect,
+} from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
 import { ApiException } from 'src/commons/interfaces/api-exception';
 import { AuthService } from './auth.service';
@@ -31,5 +42,12 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
   async login(@Body() body: UserLoginRequest): Promise<UserRegisterDto> {
     return await this.authService.login(body);
+  }
+
+  @UseGuards(LocalAuthGuard)
+  @Post('login-local')
+  @Redirect('/')
+  async loginLocal() {
+    return;
   }
 }

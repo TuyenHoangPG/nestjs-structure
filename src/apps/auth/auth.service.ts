@@ -77,4 +77,18 @@ export class AuthService {
   async validatePayload({ userId }: JwtPayload): Promise<User | null> {
     return this.userService.getUserById(userId);
   }
+
+  async validateUser(email: string, password: string): Promise<User | null> {
+    const user = await this.userService.getUserByEmail(email);
+    if (!user) {
+      return null;
+    }
+
+    const isMatch = await compare(password, user.password);
+    if (!isMatch) {
+      return null;
+    }
+
+    return user;
+  }
 }

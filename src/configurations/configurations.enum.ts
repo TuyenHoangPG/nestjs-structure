@@ -9,4 +9,6 @@ export enum ConfigurationEnum {
   DB_USERNAME = 'DB_USERNAME',
   DB_PASSWORD = 'DB_PASSWORD',
   DB_NAME = 'DB_NAME',
+
+  SESSION_SECRET = 'SESSION_SECRET',
 }

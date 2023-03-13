@@ -39,3 +39,4 @@ lerna-debug.log*
 .eslintcache
 
 /uploads
+/public/bower_components

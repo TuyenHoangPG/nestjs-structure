@@ -9,3 +9,7 @@ export class ApiException {
   @ApiPropertyOptional() timestamp?: string;
   @ApiPropertyOptional() path?: string;
 }
+
+export class RedirectingException {
+  constructor(public url: string) {}
+}
