@@ -20,4 +20,8 @@ export class UserRegisterRequest {
   @IsString()
   @IsNotEmpty()
   password: string;
+
+  @IsString()
+  @IsNotEmpty()
+  passwordConfirmation: string;
 }

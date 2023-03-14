@@ -7,5 +7,6 @@ export class UserResponseDto {
   @ApiProperty() lastName: string;
   @ApiProperty() displayName: string;
   @ApiProperty() email: string;
+  @ApiProperty() verifyToken: string;
   @ApiProperty() role: UserRole;
 }

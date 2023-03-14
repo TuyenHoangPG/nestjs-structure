@@ -1,4 +1,5 @@
 import { UserService } from '@apps/user/user.service';
+import { REGISTER_SUCCESS } from '@constants/constants';
 import { LocalAuthGuard } from '@guards/local-auth.guard';
 import {
   Body,
@@ -12,7 +13,8 @@ import {
   Redirect,
 } from '@nestjs/common';
 import { ApiResponse } from '@nestjs/swagger';
-import { ApiException } from 'src/commons/interfaces/api-exception';
+import { ApiException, RedirectingException } from 'src/commons/interfaces/api-exception';
+import { ICustomRequest } from 'src/commons/interfaces/request';
 import { AuthService } from './auth.service';
 import { UserLoginRequest } from './dtos/requests/user-login.request.dto';
 import { UserRegisterRequest } from './dtos/requests/user-register.request.dto';
@@ -26,7 +28,11 @@ export class AuthController {
   @ApiResponse({ status: HttpStatus.CREATED, type: UserRegisterDto })
   @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
   async register(@Body() body: UserRegisterRequest) {
-    const { email } = body;
+    const { email, password, passwordConfirmation } = body;
+    if (password !== passwordConfirmation) {
+      throw new HttpException('Confirm password is not match!', HttpStatus.BAD_REQUEST);
+    }
+
     const userExisted = await this.userService.getUserByEmail(email);
 
     if (userExisted) {
@@ -49,5 +55,27 @@ export class AuthController {
   @Redirect('/')
   async loginLocal() {
     return;
+  }
+
+  @Post('register-local')
+  @Redirect('/login-register')
+  async registerLocal(@Request() request: ICustomRequest, @Body() body: UserRegisterRequest) {
+    const { email, password, passwordConfirmation } = body;
+    if (password !== passwordConfirmation) {
+      throw new RedirectingException('/login-register', 'Confirm password is not match!');
+    }
+
+    const userExisted = await this.userService.getUserByEmail(email);
+
+    if (userExisted) {
+      throw new RedirectingException('/login-register', 'This email is already exist!');
+    }
+
+    const errors = await this.authService.registerUserLocal(body, request);
+    if (errors.length) {
+      request.flash('errors', errors);
+    } else {
+      request.flash('success', REGISTER_SUCCESS(email));
+    }
   }
 }

@@ -36,6 +36,12 @@ export class User extends BaseEntity {
   @Column({ name: 'role', type: 'enum', enum: UserRole, default: UserRole.USER })
   role: UserRole;
 
+  @Column({ name: 'is_active', default: false })
+  isActive: boolean;
+
+  @Column({ name: 'verify_token', type: 'uuid', nullable: true })
+  verifyToken: string;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 

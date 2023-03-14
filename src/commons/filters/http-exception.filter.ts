@@ -7,6 +7,7 @@ import { isArray } from 'lodash';
 
 export class HttpExceptionFilter implements ExceptionFilter {
   catch(error: any, host: ArgumentsHost) {
+    console.log('🚀 ~ file: http-exception.filter.ts:10 ~ HttpExceptionFilter ~ error:', error);
     const ctx = host.switchToHttp();
     const req: ICustomRequest = ctx.getRequest();
     const res: Response = ctx.getResponse();

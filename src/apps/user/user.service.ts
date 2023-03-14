@@ -5,7 +5,8 @@ import { omit } from 'lodash';
 import { ViewListUserRequest } from './dtos/requests/view-list-user.request.dto';
 import { UserResponseDto } from './dtos/responses/user.response.dto';
 import { UserRepository } from './user.repository';
-
+import { v4 } from 'uuid';
+import { Repository } from 'typeorm';
 @Injectable()
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
@@ -44,18 +45,25 @@ export class UserService {
     lastName,
     email,
     password,
+    repository,
   }: {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
+    repository?: Repository<User>;
   }): Promise<UserResponseDto> {
-    const user = await this.userRepository.create({
+    const user = await (repository ?? this.userRepository).create({
       firstName,
       lastName,
       email,
       password,
+      verifyToken: v4(),
     });
+
+    if (repository) {
+      await repository.save(user);
+    }
 
     return this._mapEntityToDto(user);
   }
