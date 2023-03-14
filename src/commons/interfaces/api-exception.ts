@@ -11,5 +11,5 @@ export class ApiException {
 }
 
 export class RedirectingException {
-  constructor(public url: string) {}
+  constructor(public url: string, public error?: string | string[]) {}
 }

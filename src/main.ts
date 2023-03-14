@@ -52,16 +52,3 @@ async function bootstrap() {
   await app.listen(AppModule.port);
 }
 bootstrap();
-
-// "bootstrap": "3.3.7",
-// "font-awesome": "4.7.0",
-// "jquery": "3.3.1",
-// "alertifyjs": "1.0.11",
-// "jquery.nicescroll": "3.7.6",
-// "moment": "2.21.0",
-// "emojionearea": "2.0.0",
-// "peerjs": "0.3.14",
-// "sweetalert2": "7.33.1",
-// "photoset-grid": "1.0.1",
-// "jquery-colorbox": "1.6.4",
-// "emojione": "4.5.0"
