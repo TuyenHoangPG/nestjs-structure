@@ -21,6 +21,7 @@ module.exports = {
     '@typescript-eslint/no-debugger': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
     'no-mixed-spaces-and-tabs': 'warn',
     'no-undef': 'warn',
     'no-template-curly-in-string': 'warn',

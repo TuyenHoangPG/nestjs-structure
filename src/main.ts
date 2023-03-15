@@ -8,6 +8,8 @@ import { SwaggerModule } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import * as session from 'express-session';
 import * as flash from 'connect-flash';
+import * as passport from 'passport';
+import * as ejsExtend from 'express-ejs-extend';
 import { join } from 'path';
 import { AppModule } from './app.module';
 
@@ -41,10 +43,13 @@ async function bootstrap() {
     origin: '*',
   });
   app.use(session(SessionConfigurations.config));
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(cookieParser());
   app.use(flash());
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.engine('ejs', ejsExtend);
   app.setViewEngine('ejs');
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());

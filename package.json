@@ -61,6 +61,7 @@
     "cookie-parser": "^1.4.6",
     "date-fns": "^2.29.3",
     "ejs": "^3.1.8",
+    "express-ejs-extend": "^0.0.1",
     "express-session": "^1.17.3",
     "fastify-swagger": "^5.1.1",
     "hbs": "^4.2.0",

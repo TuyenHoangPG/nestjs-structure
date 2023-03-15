@@ -9,12 +9,12 @@ import { ViewListUserRequest } from './dtos/requests/view-list-user.request.dto'
 export class UserRepository extends BaseRepository<User> {
   constructor(
     @InjectRepository(User)
-    userRepository: Repository<User>,
+    public instance: Repository<User>,
 
     @InjectDataSource()
-    private readonly dataSource: DataSource,
+    public dataSource: DataSource,
   ) {
-    super(userRepository);
+    super(instance);
   }
 
   async getList(payload: ViewListUserRequest) {

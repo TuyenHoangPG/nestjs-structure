@@ -1,4 +1,5 @@
 import { AuthService } from '@apps/auth/auth.service';
+import { User } from '@entities/user.entity';
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
@@ -12,7 +13,7 @@ export class LocalStrategyService extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(email: string, password: string): Promise<any> {
+  async validate(email: string, password: string): Promise<User> {
     const user = await this.authService.validateUser(email, password);
     if (!user) {
       throw new RedirectingException('/login-register', 'Invalid email or password');

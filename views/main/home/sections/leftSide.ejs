@@ -2,9 +2,9 @@
   <div class="left">
       <div class="top form-group">
           <select class="form-control" id="select-type-chat">
-              <option data-target="#all-chat" value="all-chat">Toàn bộ trò chuyện</option>
-              <option data-target="#user-chat" value="user-chat">Trò chuyện cá nhân</option>
-              <option data-target="#group-chat" value="group-chat">Trò chuyện nhóm</option>
+              <option data-target="#all-chat" value="all-chat">All Chats</option>
+              <option data-target="#user-chat" value="user-chat">Personal Chat</option>
+              <option data-target="#group-chat" value="group-chat">Group Chat</option>
           </select>
           <a href="#groupChatModal" class="create-group-chat" data-toggle="modal" 
               title="Tạo một nhóm trò chuyện mới"></a>
@@ -14,8 +14,8 @@
           <ul class="people no-padding-start">
             <% allConversationWithMessages.forEach(function(conversation) { %>
               <% if (conversation.members) { %>
-                <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-                  <li class="person group-chat" data-chat="<%= conversation._id %>">
+                <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+                  <li class="person group-chat" data-chat="<%= conversation.id %>">
                     <div class="left-avatar">
                       <!-- <div class="dot"></div> -->
                       <img src="images/users/group-avatar-trungquandev.png" alt="">
@@ -28,16 +28,16 @@
                       <% if (getLastItemInArray(conversation.messages).messageType == 'text') { %>
                         <span class="convert-emoji" title="<%= getLastItemInArray(conversation.messages).text %>"><%= getLastItemInArray(conversation.messages).text %></span>
                       <% } else if (getLastItemInArray(conversation.messages).messageType == 'image') { %>
-                        <span title="Đã gửi cho bạn một hình ảnh">Đã gửi cho bạn một hình ảnh</span>
+                        <span title="Sent an image">Sent an image</span>
                       <% } else if (getLastItemInArray(conversation.messages).messageType == 'file') { %>
-                        <span title="Đã gửi cho bạn một tệp đính kèm">Đã gửi cho bạn một tệp đính kèm</span>
+                        <span title="Sent an attachment">Sent an attachment</span>
                       <% } %>
                     </span>
                   </li>
                 </a>
               <% } else { %>
-                <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-                  <li class="person" data-chat="<%= conversation._id %>">
+                <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+                  <li class="person" data-chat="<%= conversation.id %>">
                     <div class="left-avatar">
                       <div class="dot"></div>
                       <img src="images/users/<%= conversation.avatar %>" alt="">
@@ -50,9 +50,9 @@
                       <% if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'text') { %>
                         <span class="convert-emoji" title="<%= getLastItemInArray(conversation.messages).text %>"><%= getLastItemInArray(conversation.messages).text %></span>
                       <% } else if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'image') { %>
-                        <span title="Đã gửi cho bạn một hình ảnh">Đã gửi cho bạn một hình ảnh</span>
+                        <span title="Sent an image">Sent an image</span>
                       <% } else if (typeof(getLastItemInArray(conversation.messages)) == 'string' && getLastItemInArray(conversation.messages).messageType == 'file') { %>
-                        <span title="Đã gửi cho bạn một tệp đính kèm">Đã gửi cho bạn một tệp đính kèm</span>
+                        <span title="Sent an attachment">Sent an attachment</span>
                       <% } %>
                     </span>
                   </li>
@@ -73,8 +73,8 @@
           <ul class="people no-padding-start">
             <% allConversationWithMessages.forEach(function(conversation) { %>
               <% if (!conversation.members) { %>
-                <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-                  <li class="person" data-chat="<%= conversation._id %>">
+                <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+                  <li class="person" data-chat="<%= conversation.id %>">
                     <div class="left-avatar">
                       <div class="dot"></div>
                       <img src="images/users/<%= conversation.avatar %>" alt="">
@@ -110,8 +110,8 @@
           <ul class="people no-padding-start">
             <% allConversationWithMessages.forEach(function(conversation) { %>
               <% if (conversation.members) { %>
-                <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-                  <li class="person group-chat" data-chat="<%= conversation._id %>">
+                <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+                  <li class="person group-chat" data-chat="<%= conversation.id %>">
                     <div class="left-avatar">
                       <!-- <div class="dot"></div> -->
                       <img src="images/users/group-avatar-trungquandev.png" alt="">

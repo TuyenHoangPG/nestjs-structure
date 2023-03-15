@@ -39,7 +39,7 @@
                                         <a class="panel-close close" data-dismiss="alert">×</a>
                                         <span>Update user success example.</span>
                                     </div>
-                                    <% if (user.local.email) { %>
+                                    <% if (user.email) { %>
                                     <h3>Local account.</h3>
                                     <% } else if (user.facebook) { %>
                                     <h3>Facebook account.</h3>
@@ -50,8 +50,8 @@
                                     <div class="form-group">
                                         <label class="col-lg-3 control-label">Email:</label>
                                         <div class="col-lg-8">
-                                            <% if (user.local.email) { %>
-                                            <div class="form-control" disabled><%= user.local.email %></div>
+                                            <% if (user.email) { %>
+                                            <div class="form-control" disabled><%= user.email %></div>
                                             <% } else if (user.facebook) { %>
                                             <div class="form-control" disabled><%= user.facebook.email %></div>
                                             <% } else if (user.google) { %>

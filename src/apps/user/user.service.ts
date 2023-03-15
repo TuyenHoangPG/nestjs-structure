@@ -6,7 +6,7 @@ import { ViewListUserRequest } from './dtos/requests/view-list-user.request.dto'
 import { UserResponseDto } from './dtos/responses/user.response.dto';
 import { UserRepository } from './user.repository';
 import { v4 } from 'uuid';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 @Injectable()
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}
@@ -28,6 +28,7 @@ export class UserService {
     return await this.userRepository.findOne({
       where: {
         email,
+        isActive: true,
       },
     });
   }
@@ -66,6 +67,28 @@ export class UserService {
     }
 
     return this._mapEntityToDto(user);
+  }
+
+  async getUserByVerifyToken(token: string): Promise<User> {
+    return await this.userRepository.findOne({
+      where: {
+        verifyToken: token,
+        isActive: false,
+      },
+    });
+  }
+
+  async verifyUserLocal(token: string): Promise<UpdateResult> {
+    return await this.userRepository.update(
+      {
+        verifyToken: token,
+        isActive: false,
+      },
+      {
+        verifyToken: null,
+        isActive: true,
+      },
+    );
   }
 
   private _mapEntityToDto(user: User): UserResponseDto {

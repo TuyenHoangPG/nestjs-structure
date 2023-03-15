@@ -62,7 +62,7 @@
                       <div class="find-user-bottom">
                           <ul class="contactList">
                               <% contacts.forEach(function(user) { %>
-                                <li class="_contactList" data-uid="<%= user._id %>">
+                                <li class="_contactList" data-uid="<%= user.userId %>">
                                     <div class="contactPanel">
                                         <div class="user-avatar">
                                             <img src="images/users/<%= user.avatar %>" alt="">
@@ -76,10 +76,10 @@
                                         <div class="user-address">
                                             <span>&nbsp <%= user.address %></span>
                                         </div>
-                                        <div class="user-talk" data-uid="<%= user._id %>">
+                                        <div class="user-talk" data-uid="<%= user.userId %>">
                                             Trò chuyện
                                         </div>
-                                        <div class="user-remove-contact action-danger" data-uid="<%= user._id %>">
+                                        <div class="user-remove-contact action-danger" data-uid="<%= user.userId %>">
                                             Xóa liên hệ
                                         </div>
                                     </div>
@@ -100,7 +100,7 @@
                       <div class="find-user-bottom">
                           <ul class="contactList">
                               <% contactsSent.forEach(function(user) { %>
-                                <li class="_contactList" data-uid="<%= user._id %>">
+                                <li class="_contactList" data-uid="<%= user.userId %>">
                                     <div class="contactPanel">
                                         <div class="user-avatar">
                                             <img src="images/users/<%= user.avatar %>" alt="">
@@ -114,7 +114,7 @@
                                         <div class="user-address">
                                             <span>&nbsp <%= user.address %></span>
                                         </div>
-                                        <div class="user-remove-request-contact-sent action-danger display-important" data-uid="<%= user._id %>">
+                                        <div class="user-remove-request-contact-sent action-danger display-important" data-uid="<%= user.userId %>">
                                             Hủy yêu cầu
                                         </div>
                                     </div>
@@ -135,7 +135,7 @@
                       <div class="find-user-bottom">
                           <ul class="contactList">
                               <% contactsReceived.forEach(function(user) { %>
-                                <li class="_contactList" data-uid="<%= user._id %>">
+                                <li class="_contactList" data-uid="<%= user.userId %>">
                                     <div class="contactPanel">
                                         <div class="user-avatar">
                                             <img src="images/users/<%= user.avatar %>" alt="">
@@ -149,10 +149,10 @@
                                         <div class="user-address">
                                             <span>&nbsp <%= user.address %></span>
                                         </div>
-                                        <div class="user-accept-request-contact-received" data-uid="<%= user._id %>">
+                                        <div class="user-accept-request-contact-received" data-uid="<%= user.userId %>">
                                             Chấp nhận
                                         </div>
-                                        <div class="user-remove-request-contact-received action-danger" data-uid="<%= user._id %>">
+                                        <div class="user-remove-request-contact-received action-danger" data-uid="<%= user.userId %>">
                                             Xóa yêu cầu
                                         </div>
                                     </div>

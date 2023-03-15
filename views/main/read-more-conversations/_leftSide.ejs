@@ -1,7 +1,7 @@
 <% newAllConversations.forEach(function(conversation) { %>
   <% if (conversation.members) { %>
-    <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-      <li class="person group-chat" data-chat="<%= conversation._id %>">
+    <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+      <li class="person group-chat" data-chat="<%= conversation.id %>">
         <div class="left-avatar">
           <!-- <div class="dot"></div> -->
           <img src="images/users/group-avatar-trungquandev.png" alt="">
@@ -22,8 +22,8 @@
       </li>
     </a>
   <% } else { %>
-    <a href="#uid_<%= conversation._id %>" class="room-chat" data-target="#to_<%= conversation._id %>">
-      <li class="person" data-chat="<%= conversation._id %>">
+    <a href="#uid_<%= conversation.id %>" class="room-chat" data-target="#to_<%= conversation.id %>">
+      <li class="person" data-chat="<%= conversation.id %>">
         <div class="left-avatar">
           <div class="dot"></div>
           <img src="images/users/<%= conversation.avatar %>" alt="">
