@@ -25,7 +25,7 @@ export class AppController {
       success: req.flash('success'),
       user: req.user, // this variable is saved in request by passport
       notifications: [],
-      countNotifUnread: 0,
+      countNotifUnread: 1,
       contacts: [],
       contactsSent: [],
       contactsReceived: [],
