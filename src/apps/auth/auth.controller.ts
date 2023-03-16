@@ -54,7 +54,7 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login-local')
-  @Redirect('/')
+  @Redirect('/home')
   async loginLocal(@Request() req: ICustomRequest) {
     req.flash('success', `Hello ${req.user?.displayName}. Have a good day!`);
   }

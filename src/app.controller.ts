@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('/login-register')
+  @Get(['/', '/login-register'])
   @Render('auth/master')
   getLoginRegister(@Request() req) {
     return {
@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @UseGuards(IsAuthenticatedGuard)
-  @Get('/')
+  @Get('/home')
   @Render('main/home/home')
   getHomePage(@Request() req) {
     return {
